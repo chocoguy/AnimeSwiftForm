@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct AnimeSwiftFormApp: App {
@@ -15,6 +14,5 @@ struct AnimeSwiftFormApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Item.self)
     }
 }

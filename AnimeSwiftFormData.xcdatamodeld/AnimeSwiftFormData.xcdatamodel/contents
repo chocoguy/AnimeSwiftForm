@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22158.8" systemVersion="23A5286i" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AgeRating" representedClassName="AgeRating" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="ageRatings" inverseEntity="Anime"/>
+    </entity>
+    <entity name="Anime" representedClassName="Anime" syncable="YES">
+        <attribute name="ageRating" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="endAir" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="episodeCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastWatched" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="malRanking" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="malScore" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="mediaType" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="poster" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="review" optional="YES" attributeType="String"/>
+        <attribute name="season" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="source" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="startAir" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startWatch" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stopWatch" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="studio" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="ageRatings" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AgeRating" inverseName="anime" inverseEntity="AgeRating"/>
+        <relationship name="episodes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Episode" inverseName="anime" inverseEntity="Episode"/>
+        <relationship name="mediaTypes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaType" inverseName="anime" inverseEntity="MediaType"/>
+        <relationship name="seasons" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="anime" inverseEntity="Season"/>
+        <relationship name="sources" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Source" inverseName="anime" inverseEntity="Source"/>
+        <relationship name="statuses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="anime" inverseEntity="Status"/>
+    </entity>
+    <entity name="Episode" representedClassName="Episode" syncable="YES">
+        <attribute name="animee" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="episodeNum" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="episodeStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="episodes" inverseEntity="Anime"/>
+    </entity>
+    <entity name="MediaType" representedClassName="MediaType" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="mediaTypes" inverseEntity="Anime"/>
+    </entity>
+    <entity name="Schedule" representedClassName="Schedule" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fri" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isCurrent" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mon" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sat" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sun" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="thu" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="tue" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="wed" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Season" representedClassName="Season" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="seasons" inverseEntity="Anime"/>
+    </entity>
+    <entity name="Source" representedClassName="Source" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="sources" inverseEntity="Anime"/>
+    </entity>
+    <entity name="Status" representedClassName="Status" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="statuses" inverseEntity="Anime"/>
+    </entity>
+</model>
