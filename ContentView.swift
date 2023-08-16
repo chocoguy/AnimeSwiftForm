@@ -10,8 +10,19 @@ import SwiftData
 
 struct ContentView: View {
     
+//    @ObservedObject private var animeDataService: AnimeDataService
+//    
+//    init(animeDataService: AnimeDataService){
+//        self.animeDataService = animeDataService
+//    }
+    
     var body: some View {
         Text("Select an item")
+        Button{
+            //animeDataService.getAnime()
+        } label: {
+            Label("see", systemImage: "trash")
+        }
     }
 }
 
