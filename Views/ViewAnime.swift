@@ -18,7 +18,8 @@ struct ViewAnime: View {
     @State private var _malRanking: Int = 81
     @State private var _malScore: Float = 8.61
     @State private var _mediaType: String = "TV"
-    @State private var _poster: String = "https://cdn.myanimelist.net/images/anime/1441/122795.jpg"
+    //https://cdn.myanimelist.net/images/anime/1441/122795.jpg
+    @State private var _poster: String = ""
     @State private var _rating: Int = 7
     @State private var _season: String = "Spring"
     @State private var _source: String = "Manga"
@@ -30,66 +31,99 @@ struct ViewAnime: View {
     @State private var _title: String = "SpyXFamily"
     
     var body: some View {
-        HStack{
-            VStack{
-                Text("Episode \(String(_lastWatched))/\(String(_episodeCount)) | \(_status)")
-                Divider()
-                Group{
-                    HStack{
-                        Text("Season:")
-                        Text("\(_season) - \(_startAir.formatted(Date.FormatStyle().year(.defaultDigits)))")
+        VStack{
+            HStack{
+                VStack{
+                    Text("Episode \(String(_lastWatched))/\(String(_episodeCount)) | \(_status)").padding(.top, 20)
+                    Divider()
+                    Group{
+                        HStack{
+                            Text("Season:").padding(.trailing, 25)
+                            Text("\(_season) - \(_startAir.formatted(Date.FormatStyle().year(.defaultDigits)))")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Start Air:").padding(.trailing, 21)
+                            Text("\(_startAir.formatted(date: .numeric, time: .omitted))")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("End Air:").padding(.trailing, 27)
+                            Text("\(_endAir.formatted(date: .numeric, time: .omitted))")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("MAL Score:").padding(.trailing, 5)
+                            Text("\(String(_malScore))")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Your Score:").padding(.trailing, 6)
+                            Text("\(String(_rating))")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("MAL Rank:").padding(.trailing, 10)
+                            Text("\(String(_malRanking))")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Rated:").padding(.trailing, 35)
+                            Text("\(_ageRating)")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Status:").padding(.trailing, 32)
+                            Text("Finished Airing")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Source:").padding(.trailing, 28)
+                            Text("\(_source)")
+                            Spacer()
+                        }.padding(.leading, 20)
                     }
-                    HStack{
-                        Text("Started Airing:")
-                        Text("\(_startAir.formatted(date: .numeric, time: .omitted))")
+                    Group{
+                        HStack{
+                            Text("Studios:").padding(.trailing, 25)
+                            Text("\(_studio)")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Genres:").padding(.trailing, 27)
+                            Text("\(_genre)")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            Text("Description:")
+                            Spacer()
+                        }.padding(.leading, 20)
+                        HStack{
+                            List{
+                                Text(_desc)
+                            }.frame(width: 520).padding(.leading, 6)
+                            Spacer()
+                        }
                     }
-                    HStack{
-                        Text("Ended Airing:")
-                        Text("\(_endAir.formatted(date: .numeric, time: .omitted))")
-                    }
-                    HStack{
-                        Text("MAL Score:")
-                        Text("\(String(_malScore))")
-                    }
-                    HStack{
-                        Text("Your Score:")
-                        Text("\(String(_rating))")
-                    }
-                    HStack{
-                        Text("MAL Rank:")
-                        Text("\(String(_malRanking))")
-                    }
-                    HStack{
-                        Text("Rated:")
-                        Text("\(_ageRating)")
-                    }
-                    HStack{
-                        Text("Status:")
-                        Text("Finished Airing")
-                    }
-                    HStack{
-                        Text("Status:")
-                        Text("Finished Airing")
-                    }
-                    HStack{
-                        Text("Source:")
-                        Text("\(_source)")
+                    Spacer()
+                }
+                VStack{
+                    if (_poster.isEmpty) {
+                        
+                    }else{
+                        AsyncImage(url: URL(string: _poster)).padding(.trailing, 20)
                     }
                 }
-                Group{
-                    HStack{
-                        Text("Studios:")
-                        Text("\(_studio)")
-                    }
-                    HStack{
-                        Text("Genres:")
-                        Text("\(_genre)")
-                    }
-                }
+                
             }
-            VStack{
-
-            }
+            Menu{
+                Button("Watch Ep", action: {print("Watch ep command")})
+                Button("Delete", action:{print("Delete anime command")})
+            } label: {
+                Text("Edit")
+            } primaryAction: {
+                print("Edit func")
+            }.padding(.leading, 650).padding(.bottom, 20).padding(.trailing, 20).menuStyle(.borderedButton)
         }
     }
 }

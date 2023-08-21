@@ -80,8 +80,8 @@ struct Home: View {
             .navigationTitle("AnimeSwiftForm - Home")
             .navigationDestination(for: AnimeModel.self) { anime in
                 //Text("Anime \(anime.title)")
-                ViewAnime()
-                    .navigationTitle("SpyXFamily")
+                AddAnimeMAL()
+                    .navigationTitle("Add")
             }
             .onAppear{
                 selection = nil
